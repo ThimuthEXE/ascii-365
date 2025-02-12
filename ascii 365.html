@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AK Code and Day Code</title>
+</head>
+<body>
+    <h1>AK Code and Day Code</h1>
+    <label for="akCode">Enter the AK code:</label>
+    <input type="number" id="akCode" placeholder="AK Code">
+    <br><br>
+    <label for="dayCode">Enter the Day Code:</label>
+    <textarea id="dayCode" placeholder="Day Code"></textarea>
+    <br><br>
+    <button onclick="processCode()">Process</button>
+    <p id="result"></p>
+
+    <script>
+        function processCode() {
+            // Get the AK code (shift value)
+            const akCode = parseInt(document.getElementById('akCode').value);
+
+            // Get the Day Code (input string)
+            const dayCode = document.getElementById('dayCode').value;
+
+            let result = '';
+
+            // Iterate through each character in the Day Code
+            for (let i = 0; i < dayCode.length; i++) {
+                // Get the ASCII code of the current character
+                const ascii = dayCode.charCodeAt(i);
+
+                // Shift the ASCII code by the AK code
+                const shiftedAscii = ascii + akCode;
+
+                // Convert the shifted ASCII code back to a character
+                const shiftedChar = String.fromCharCode(shiftedAscii);
+
+                // Append the shifted character to the result
+                result += shiftedChar;
+            }
+
+            // Display the result
+            document.getElementById('result').innerText = `Result: ${result}`;
+        }
+    </script>
+</body>
+</html>
